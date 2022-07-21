@@ -1,7 +1,7 @@
 import imutils
 import cv2
-def forwardPass(image,net):
-    image = imutils.resize(image, width=600,a = 103.939,b = 116.779,c = 123.680)
+def forwardPass(image,net,a = 103.939,b = 116.779,c = 123.680):
+    image = imutils.resize(image, width=800)
     (h, w) = image.shape[:2]
 
     # construct a blob from the image, set the input, and then perform a
