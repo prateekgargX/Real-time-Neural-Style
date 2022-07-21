@@ -11,7 +11,10 @@ ap.add_argument("-m", "--model", required=True,
 	help="neural style transfer model")
 ap.add_argument("-i", "--image", required=True,
 	help="input image to apply neural style transfer to")
+ap.add_argument("-p", "--path", required=False,
+	help="path/name of the output image")
 args = vars(ap.parse_args())
+
 
 # print(args["model"].type())
 
@@ -51,6 +54,7 @@ print("[INFO] neural style transfer took {:.4f} seconds".format(
 basepath = 'images/outputs/'
 if not os.path.exists(basepath): os.mkdir(basepath)
 savepath = basepath+args["model"].split('/')[-1].split('.')[0]+'-'+args["image"].split('/')[-1]
+if not args["path"]==None : savepath = args["path"]
 cv2.imwrite(savepath, 255*output)
 # cv2.imshow("Input", image)
 # cv2.imshow("Output",output)
